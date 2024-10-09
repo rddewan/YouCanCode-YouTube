@@ -16,6 +16,7 @@ import mongoSanitize from "express-mongo-sanitize";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const payload = {};
 
 const app = express();
 
@@ -86,7 +87,7 @@ app.use(cookieParser());
 // middleware to parse the json
 app.use(express.json({ limit: "10kb" }));
 // middleware to sanitize the data
-app.use(mongoSanitize());
+mongoSanitize.sanitize(payload);
 
 // middleware to serve static files  from public folder
 app.use(express.static("public"));
@@ -110,7 +111,7 @@ app.use("/api/v1/admin", adminRouter);
  * This middleware function is used to handle 404 errors,
  * i.e., when a route is requested that does not exist on the server.
  */
-app.all("*", (req: Request, res: Response, next: NextFunction) => {
+app.all(/(.*)/, (req: Request, res: Response, next: NextFunction) => {
 	next(
 		new AppError(
 			`Can't find ${req.originalUrl} on this server!`,

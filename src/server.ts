@@ -34,7 +34,9 @@ const DB: string = process.env.MONGO_DB?.replace(
 	process.env.MONGO_DB_PASSWORD || "",
 ) as string;
 mongoose
-	.connect(DB)
+	.connect(DB, {
+		dbName: "YouCanCode",
+	})
 	.then(() => {
 		// eslint-disable-next-line no-console
 		console.log(`MongoDB connected successfully`);

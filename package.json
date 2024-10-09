@@ -10,10 +10,10 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "rimraf ./dist && tsc && cp -R ./src/view ./dist/",
-		"run": "node ./dist/server.js",
+		"start": "node ./dist/server.js",
 		"dev": "nodemon --exec node --no-warnings=ExperimentalWarning --loader ts-node/esm  ./src/server.ts",
 		"format": "prettier --write .",
-		"prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then husky install; fi",
+		"prepare": "husky",
 		"lint": "eslint . --fix"
 	},
 	"author": "MobileAcademy",
