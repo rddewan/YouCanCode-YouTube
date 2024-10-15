@@ -49,9 +49,9 @@ const sendErrorProd = (err: AppError, req: Request, res: Response) => {
 			message: err.message,
 		});
 	} else {
-		res.status(err.statusCode).json({
+		res.status(err.statusCode === undefined ? 500 : err.statusCode).json({
 			status: "error",
-			message: "Something went very wrong!",
+			message: err.message || "Something went very wrong!",
 		});
 	}
 };
