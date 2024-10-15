@@ -1,3 +1,11 @@
+# YouCanCode
+
+Simple api build with express and typescript
+
+# Course
+
+-   https://mobileacademy.io/
+
 ## File naming convention
 
 -   kebab-case
