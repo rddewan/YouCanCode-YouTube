@@ -20,6 +20,8 @@ const payload = {};
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 // global rate limit
 const globalRateLimit = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes - How long to remember requests for, in milliseconds.
@@ -43,7 +45,6 @@ const authRateLimit = rateLimit({
 	max: 3, // How many requests to allow.
 	standardHeaders: "draft-7", // Enable the Ratelimit header.
 	legacyHeaders: false,
-	validate: { trustProxy: false },
 	// Function to run after limit is reached (overrides message and statusCode settings, if set).
 	handler: (req: Request, res: Response, next: NextFunction) => {
 		next(
