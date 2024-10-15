@@ -42,7 +42,7 @@ const globalRateLimit = rateLimit({
 // Auth rate limit
 const authRateLimit = rateLimit({
 	windowMs: 5 * 60 * 1000, // 5 minutes - How long to remember requests for, in milliseconds.
-	max: 3, // How many requests to allow.
+	max: 10, // How many requests to allow.
 	standardHeaders: "draft-7", // Enable the Ratelimit header.
 	legacyHeaders: false,
 	// Function to run after limit is reached (overrides message and statusCode settings, if set).
