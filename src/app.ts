@@ -43,6 +43,7 @@ const authRateLimit = rateLimit({
 	max: 3, // How many requests to allow.
 	standardHeaders: "draft-7", // Enable the Ratelimit header.
 	legacyHeaders: false,
+	validate: { trustProxy: false },
 	// Function to run after limit is reached (overrides message and statusCode settings, if set).
 	handler: (req: Request, res: Response, next: NextFunction) => {
 		next(
